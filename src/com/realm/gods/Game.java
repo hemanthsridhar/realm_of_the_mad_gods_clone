@@ -14,7 +14,9 @@ public class Game extends Canvas implements Runnable {
     private JFrame frame;
 
     public Game() {
-
+        Dimension size  = new Dimension(width*scale, height*scale);
+        setPreferredSize(size);
+        frame = new JFrame();
     }
 
     public synchronized void start() {
@@ -37,5 +39,14 @@ public class Game extends Canvas implements Runnable {
         while (running) {
 
         }
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.frame.setResizable(false); //important
+        game.frame.setTitle("Realm Of gods clone");
+        game.frame.add(game);
+        game.frame.pack();
+        game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
